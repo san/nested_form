@@ -102,6 +102,7 @@ module NestedForm
 
     def fields_blueprint_id_for(association)
       assocs = object_name.to_s.scan(/(\w+)_attributes/).map(&:first)
+      assocs << object_name if assocs.empty?
       assocs << association
       assocs.join('_') + '_fields_blueprint'
     end
